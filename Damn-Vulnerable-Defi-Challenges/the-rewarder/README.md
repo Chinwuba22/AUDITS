@@ -1,0 +1,3 @@
+## DESCRIPTION OF BUG
+
+The issue here lies in the fact that the timing of deposits in the `TheRewardPool.sol` is not accounted for properly. The contract only looks out for the `totaAmountDeposited` after 5 days but does not account for it from when the deposits was made. So an exploiter can simply wait for that future date and exploit this flaw. Also considering that it is possible to take a flashloan, the exploiter would likely hold the a high percentage of the `rewardtoken`. Check the `test` folder for a POC

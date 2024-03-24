@@ -32,16 +32,11 @@ contract Attacker{
     receive() payable external {}
 }
 
-contract AttackReceiver {
-    receive() payable external {}
-}
-
 
 contract TestTrusterCanBeDrained is Test {
     DamnValuableToken dvt;
     TrusterLenderPool pool;
     Attacker attack;
-    AttackReceiver _receiverr;
 
     address player1 = makeAddr("player1");
 
@@ -52,9 +47,7 @@ contract TestTrusterCanBeDrained is Test {
         dvt = new DamnValuableToken();
         pool = new TrusterLenderPool(dvt);
         attack = new Attacker(pool);
-        _receiverr = new AttackReceiver();
 
-        
         dvt.transfer(address(pool), INITIAL_POOL_BALANCE);
 
         //check the balance of tokens in pool

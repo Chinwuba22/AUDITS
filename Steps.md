@@ -16,8 +16,8 @@ This is to understand the protocols related activities and get insights to the c
 This stage is usally not intensive. It's to have an understanding of each function and contracts and the entire layout. Also Using solidity metrics at this stage to get a better visual layout of the entire code.
 
 **Tooling**
-1. Slither
-2. Aderyn
+1. Slither (```slither .```)
+2. Aderyn (```aderyn .```)
 
 **Determine the Invariant**
 

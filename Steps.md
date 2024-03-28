@@ -21,7 +21,7 @@ This stage is usally not intensive. It's to have an understanding of each functi
 
 **Determine the Invariant**
 
-**Write a stateless & stateful test(open and closed)**
+**Write a stateless & stateful test(open and closed) if not written yet or read the test if its available**
 
 **Manual Review**
 1. Review slither and Aderyn finding

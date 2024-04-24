@@ -14,7 +14,8 @@ This is to understand the protocols related activities and get insights to the c
 
 **Read the code**
 
-This stage is usally not intensive. It's to have an understanding of each function and contracts and the entire layout. Also Using solidity metrics at this stage to get a better visual layout of the entire code.
+This stage is usally not intensive. It's to have an understanding of each function and contracts and the entire layout. 
+Solidity metrics is also used at this stage to get a better visual layout of the entire code.
 
 **Tooling**
 1. Slither (```slither .```)

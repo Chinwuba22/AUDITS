@@ -4,7 +4,7 @@ Reentrancy Attack is a type of exploit where an exploter repeatedly calls a part
 
 Given the cause of this attack, the best way to avoid/limit the risk of it is to always ensure to follow the CEI principle or(and) use a reentrancy-guard when interacting with external contract.
 
-[Reentrancy Guard example from Openzeppelin] (https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol)
+[Reentrancy Guard example from Openzeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol)
 
 The different types of reentrancy-attack includes;
 1. Classical type of reentrancy.
@@ -14,8 +14,11 @@ The different types of reentrancy-attack includes;
 5. ERC777 & ERC721 reentrancy.
 
 ## Classical Type of Reentrancy
-Code snippet: 
-Attack Contract:
+[Code snippet](https://github.com/Chinwuba22/AUDITS/blob/main/COMMON-ATTACKS/Reentrancy-Attack/src/Classical-Type/ClassicalType.sol) 
+
+[Attack Contract](https://github.com/Chinwuba22/AUDITS/blob/main/COMMON-ATTACKS/Reentrancy-Attack/src/Classical-Type/Attack.sol)
+
+
 POC:
 Explanation:
 

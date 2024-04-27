@@ -1,54 +1,66 @@
-## Reentrancy Attack
+## Foundry
 
-Reentrancy Attack is a type of exploit where an exploter repeatedly calls a particular function, either to extract funds or to manipulate the state of any function/variable in a contract. The major cause of this attack is usually a failure to comply with the CEI(Checks, Effects, Interactions) principle which is a system used to update the state of a variable, or(and) failure to use a reentrant safeguard in functions which makes external calls.
+**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
 
-Given the cause of this attack, the best way to avoid/limit the risk of it is to always ensure to follow the CEI principle or(and) use a reentrancy-guard when interacting with external contract.
+Foundry consists of:
 
-[Reentrancy Guard example from Openzeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol)
+-   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
+-   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
+-   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
+-   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
 
-The different types of reentrancy-attack includes;
-1. Classical type of reentrancy.
-2. Cross function reentrancy.
-3. Cross contract reentrancy.
-4. Read only reentrancy.
-5. ERC777 & ERC721 reentrancy.
+## Documentation
 
-## Classical Type of Reentrancy
-[Code snippet](https://github.com/Chinwuba22/AUDITS/blob/main/COMMON-ATTACKS/Reentrancy-Attack/src/Classical-Type/ClassicalType.sol) 
+https://book.getfoundry.sh/
 
-[Attack Contract](https://github.com/Chinwuba22/AUDITS/blob/main/COMMON-ATTACKS/Reentrancy-Attack/src/Classical-Type/Attack.sol)
+## Usage
 
+### Build
 
-POC:
-Explanation:
+```shell
+$ forge build
+```
 
-## Cross Function Reentrancy
-Code snippet:
-Attack Contract:
-Explanation:
+### Test
 
-## Cross Contract Reentrancy
-Code snippet:
-Attack Contract:
-Explanation:
+```shell
+$ forge test
+```
 
-## Cross Contract Reentrancy
-Code snippet:
-Attack Contract:
-Explanation:
+### Format
 
-## Read Only Reentrancy
-Code snippet:
-Attack Contract:
-Explanation:
+```shell
+$ forge fmt
+```
 
-## ERC777 & ERC721 Reentrancies
-Code snippet:
-Attack Contract:
-Explanation:
+### Gas Snapshots
 
-## Breaking down 2 Complex Examples FIndings of Reentrancy From solodit.
+```shell
+$ forge snapshot
+```
 
+### Anvil
 
+```shell
+$ anvil
+```
 
+### Deploy
 
+```shell
+$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+```
+
+### Cast
+
+```shell
+$ cast <subcommand>
+```
+
+### Help
+
+```shell
+$ forge --help
+$ anvil --help
+$ cast --help
+```

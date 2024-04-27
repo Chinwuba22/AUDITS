@@ -1,11 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity 0.8.18;
 
-/**
- * @notice This Contract is a simple contract which allows users to deposit and withdraw ether.
- * @author Uba Chris (Extracted from https://solidity-by-example.org/hacks/re-entrancy/)
- */
-contract CommonReentrancyExample {
+contract ClassicalType {
     mapping(address => uint256) public balances;
 
     function deposit() public payable {
@@ -22,7 +18,6 @@ contract CommonReentrancyExample {
         balances[msg.sender] = 0;
     }
 
-    // Helper function to check the balance of this contract
     function getBalance() public view returns (uint256) {
         return address(this).balance;
     }

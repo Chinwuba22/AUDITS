@@ -18,7 +18,7 @@ The different types of reentrancy-attack includes;
 - [Attack Contract](https://github.com/Chinwuba22/AUDITS/blob/main/COMMON-ATTACKS/Reentrancy-Attack/src/Classical-Type/Attack.sol)
 - [POC](https://github.com/Chinwuba22/AUDITS/blob/main/COMMON-ATTACKS/Reentrancy-Attack/test/ClassicalType.t.sol)
 
-Explanation: The reason why it is possible to exploit the `ClassicalType` contract is because its withdraw function fails to update the state of the msg.sender before the external call. That is, because it failed to comply with CEI.
+Explanation: Classical Reentrancy is generally used to refer to the simplest form of an reentrnacy. From the scenario above, the reason why it is possible to exploit the `ClassicalType` contract is because its withdraw function fails to update the state of the msg.sender before the external call. That is, because it failed to comply with CEI.
 
 ```
 function withdraw() public {
@@ -54,7 +54,7 @@ function withdraw() public {
 
 
 ## Cross Function Reentrancy
-Code snippet:
+- [Code snippet]()
 Attack Contract:
 Explanation:
 

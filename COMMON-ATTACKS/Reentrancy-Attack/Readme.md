@@ -54,9 +54,11 @@ function withdraw() public {
 
 
 ## Cross Function Reentrancy
-- [Code snippet]()
-Attack Contract:
-Explanation:
+- [Code snippet](https://github.com/Chinwuba22/AUDITS/blob/main/COMMON-ATTACKS/Reentrancy-Attack/src/Cross-Function/CrossFunction.sol)
+- [Attack Contract](https://github.com/Chinwuba22/AUDITS/blob/main/COMMON-ATTACKS/Reentrancy-Attack/src/Cross-Function/Attack.sol)
+- [POC](https://github.com/Chinwuba22/AUDITS/blob/main/COMMON-ATTACKS/Reentrancy-Attack/test/CrossFunctionAttack.t.sol)
+
+Explanation: 
 
 ## Cross Contract Reentrancy
 Code snippet:

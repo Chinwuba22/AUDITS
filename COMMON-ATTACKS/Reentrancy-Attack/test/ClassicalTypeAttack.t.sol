@@ -22,8 +22,8 @@ contract ClassicalTypeAttack is Test {
 
      function test_attackScenerio() public {
         //GET INITIAL CONTRACT BALANCES
-         console.log("ClassicalType contract balance is:", address(ct).balance);
-         console.log("Attack contract balance is:", address(attackContract).balance);
+        assertEq(address(ct).balance, 0);
+        assertEq(address(attackContract).balance, 0);
 
          //NORMALUSER MAKES DEPOSIT INTO CLASSICALTYPE CONTRACT
          vm.prank(NORMALUSER);

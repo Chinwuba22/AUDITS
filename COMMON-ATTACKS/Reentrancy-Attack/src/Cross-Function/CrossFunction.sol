@@ -14,7 +14,7 @@ contract CrossFunction is ReentrancyGuard {
         uint256 usersBalance = balances[msg.sender];
         require(usersBalance >= amount, "NOT ENOUGH BALANCE");
 
-        (bool success, ) = msg.sender.call{value:amount}("");
+        (bool success, ) = payable(msg.sender).call{value:amount}("");
         require(success, "WITHDRAWAL FAILED");
 
         balances[msg.sender] = usersBalance - amount;

@@ -8,23 +8,39 @@ import {Attack} from "../src/Cross-Function/Attack.sol";
 
 contract CrossFunctionAttack is Test {
     CrossFunction crossFunction;
+    Attack attackContract;
 
-    address tester = makeAddr("tester1");
+    address ATTACKER = makeAddr("attacker");
+    address NORMALUSER = makeAddr("user");
 
-    function setUp() public {
+    uint256 AMOUNT = 1 ether;
+
+     function setUp() public {
         crossFunction = new CrossFunction();
-        vm.deal(tester, 100 ether);
-    }
+        attackContract= new Attack(crossFunction, ATTACKER);
+        vm.deal(ATTACKER, 4 ether);
+        vm.deal(NORMALUSER, 4 ether);
+     }
 
-    function test_keepsTrackOfUsersDeposits() public {
-        vm.prank(tester);
-        crossFunction.deposit{value: 5 ether}();
+     function test__attackScenerio() public {
+         //NORMALUSER MAKES DEPOSIT INTO CROSSFUNCTION CONTRACT
+         vm.prank(NORMALUSER);
+         crossFunction.deposit{value: AMOUNT}();
+         assertEq(address(crossFunction).balance, AMOUNT);
+         assertEq(crossFunction.getBalance(address(NORMALUSER)), AMOUNT);
 
-        console.log(crossFunction.getBalance(tester));
+        // ATTACKER MAKES DEPOSIT AND WITHDRAW ALL BALANCE THROUGH ATTACK CONTRACT
+        vm.startPrank(ATTACKER);
+        console.log(ATTACKER.balance);
+        attackContract.deposit{value: AMOUNT}();
+        attackContract.withdraw();
+        vm.stopPrank();
+        console.log(ATTACKER.balance);
 
-        vm.prank(tester);
-        crossFunction.withdraw(5 ether);
 
-        console.log(crossFunction.getBalance(tester));
+        //  // BALANCE OF THE CONTRACTS AFTER THE ATTACK
+        // // console.log("Balance of the Attack contract after the attack is:", crossFunction.getBalance(address(attackContract)));
+        // // console.log("CrossFunction contract balance after ATTACKER's deposit is:", address(crossFunction).balance);
+        // // console.log(crossFunction.getBalance(ATTACKER));
     }
 }

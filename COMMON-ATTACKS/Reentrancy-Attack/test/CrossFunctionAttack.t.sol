@@ -29,18 +29,18 @@ contract CrossFunctionAttack is Test {
          assertEq(address(crossFunction).balance, AMOUNT);
          assertEq(crossFunction.getBalance(address(NORMALUSER)), AMOUNT);
 
-        // ATTACKER MAKES DEPOSIT AND WITHDRAW ALL BALANCE THROUGH ATTACK CONTRACT
+        // ATTACKER USES THE ATTACK CONTRACT TO MAKES DEPOSITS AND PLACE WITHDRAWAL
+        uint256 startingBalance = address(attackContract).balance;
         vm.startPrank(ATTACKER);
-        console.log(ATTACKER.balance);
         attackContract.deposit{value: AMOUNT}();
         attackContract.withdraw();
         vm.stopPrank();
-        console.log(ATTACKER.balance);
+        assertEq(address(attackContract).balance + startingBalance, AMOUNT);
 
+        //ATTACKER WHO IS THE OWNER WITHDRAWS EXTRA BALANCE WHICH IS NOT HIS
+        vm.prank(ATTACKER);
+        crossFunction.withdraw(AMOUNT);
+        assertEq(address(attackContract).balance + ATTACKER.balance, crossFunction.getBalance(address(NORMALUSER)) + 4 ether);
 
-        //  // BALANCE OF THE CONTRACTS AFTER THE ATTACK
-        // // console.log("Balance of the Attack contract after the attack is:", crossFunction.getBalance(address(attackContract)));
-        // // console.log("CrossFunction contract balance after ATTACKER's deposit is:", address(crossFunction).balance);
-        // // console.log(crossFunction.getBalance(ATTACKER));
     }
 }

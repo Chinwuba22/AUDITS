@@ -58,7 +58,19 @@ function withdraw() public {
 - [Attack Contract](https://github.com/Chinwuba22/AUDITS/blob/main/COMMON-ATTACKS/Reentrancy-Attack/src/Cross-Function/Attack.sol)
 - [POC](https://github.com/Chinwuba22/AUDITS/blob/main/COMMON-ATTACKS/Reentrancy-Attack/test/CrossFunctionAttack.t.sol)
 
-Explanation: 
+Explanation: Cross-Function Reentrancy is used to refer to a type of reentrancy exploit where the mode of exploit is through 2 or more function. It is also important to mention that in any type of reentrancy, the root cause is still failure to update a particular variable state appropriately; that is, not duly complying with CEI. In the scenerio above, the mode of exploting the `CrossFunction::withdraw` is through the `CrossFunction::transfer`, and the reason why it was exploitable was because `balances[msg.sender] = usersBalance - amount;` which updates the state of balance only takes place after the external call `(bool success, ) = payable(msg.sender).call{value:amount}("");`. It is impossible to reenter the `CrossFunction::withdraw` as a result of the `nonReentrant` but was possible through `CrossFunction::transfer` as can be seen in the `Attack` contract. A simple fix for this would be to update the state first before making the external call.
+```
+ function withdraw(uint256 amount) public nonReentrant{
+        uint256 usersBalance = balances[msg.sender];
+        require(usersBalance >= amount, "NOT ENOUGH BALANCE");
+
+        balances[msg.sender] = usersBalance - amount;
+
+        (bool success, ) = payable(msg.sender).call{value:amount}("");
+        require(success, "WITHDRAWAL FAILED");
+
+    }
+```
 
 ## Cross Contract Reentrancy
 Code snippet:

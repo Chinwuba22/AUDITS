@@ -26,7 +26,6 @@ contract CrossFunction is ReentrancyGuard {
 
     }
 
-
     function getBalance(address user) public view returns (uint256){
         return balances[user];
     }

@@ -1,4 +1,4 @@
-## Reentrancy Attack
+## Re-entrancy Attack
 
 Reentrancy Attack is a type of exploit where an exploter repeatedly calls a particular function, either to extract funds or to manipulate the state of any function/variable in a contract. The major cause of this attack is usually a failure to comply with the CEI(Checks, Effects, Interactions) principle which is a system used to update the state of a variable, or(and) failure to use a reentrant safeguard in functions which makes external calls.
 
@@ -73,14 +73,12 @@ Explanation: Cross-Function Reentrancy is used to refer to a type of reentrancy 
 ```
 
 ## Cross Contract Reentrancy
-Code snippet:
-Attack Contract:
+- [Code snippet]()
+- [Attack Contract]()
+- [POC]()
+
 Explanation:
 
-## Cross Contract Reentrancy
-Code snippet:
-Attack Contract:
-Explanation:
 
 ## Read Only Reentrancy
 Code snippet:

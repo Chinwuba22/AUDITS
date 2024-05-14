@@ -22,7 +22,7 @@ contract CrossFunctionAttack is Test {
         vm.deal(NORMALUSER, 4 ether);
      }
 
-     function test__attackScenerio() public {
+     function test_crossFunctionAttackScenerio() public {
          //NORMALUSER MAKES DEPOSIT INTO CROSSFUNCTION CONTRACT
          vm.prank(NORMALUSER);
          crossFunction.deposit{value: AMOUNT}();

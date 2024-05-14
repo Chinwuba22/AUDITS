@@ -5,7 +5,6 @@ import {ERC20Burnable} from "@openzeppelin/contracts/token/ERC20/extensions/ERC2
 
 contract SampleToken is ERC20, ERC20Burnable, AccessControl {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
-    bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
     constructor() ERC20("SAMPLETOKEN", "ST"){
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
@@ -15,12 +14,12 @@ contract SampleToken is ERC20, ERC20Burnable, AccessControl {
         _mint(to, amount);
     }
 
-    function burnAll(address from) public onlyRole(BURNER_ROLE) {
+    function burnAll(address from) public {
         uint256 balanceOfTo = balanceOf(from);
         _burn(from, balanceOfTo);
     }
 
-    function burn(address from, uint256 amount) public onlyRole(BURNER_ROLE) {
+    function burn(address from, uint256 amount) public {
         _burn(from, amount);
     }
 }

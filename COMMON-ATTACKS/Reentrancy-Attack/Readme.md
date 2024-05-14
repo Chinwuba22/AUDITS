@@ -11,7 +11,6 @@ The different types of reentrancy-attack includes;
 2. Cross function reentrancy.
 3. Cross contract reentrancy.
 4. Read only reentrancy.
-5. ERC777 & ERC721 reentrancy.
 
 ## Classical Type of Reentrancy
 - [Code snippet](https://github.com/Chinwuba22/AUDITS/blob/main/COMMON-ATTACKS/Reentrancy-Attack/src/Classical-Type/ClassicalType.sol) 
@@ -73,24 +72,18 @@ Explanation: Cross-Function Reentrancy is used to refer to a type of reentrancy 
 ```
 
 ## Cross Contract Reentrancy
-- [Code snippet]()
-- [Attack Contract]()
-- [POC]()
+- [Code snippet](https://github.com/Chinwuba22/AUDITS/blob/main/COMMON-ATTACKS/Reentrancy-Attack/src/Cross-Contract/CrossContract.sol)
+- [Sample Token Contract](https://github.com/Chinwuba22/AUDITS/blob/main/COMMON-ATTACKS/Reentrancy-Attack/src/Cross-Contract/SampleToken.sol)
+- [Attack Contract](https://github.com/Chinwuba22/AUDITS/blob/main/COMMON-ATTACKS/Reentrancy-Attack/src/Cross-Contract/Attack.sol)
+- [POC](https://github.com/Chinwuba22/AUDITS/blob/main/COMMON-ATTACKS/Reentrancy-Attack/test/CrossContractAttack.t.sol)
 
-Explanation:
-
+Explanation: Cross-contract reentrancy is a type of reentrancy where the mode of exploit is through a contract that is linked to the contract with the vulnerability. In the scenario above, the vulnerabilty lies in the fact that `CrossContract::withdraw` does not have any state which updates the balances upon an external call. This contract was exploited through `sampleToken.transfer(owner, balance);` in the `SampleToken::recieve` function. As same with the recommendation in the other type of reentrancy which has been discussed, a good solution would be to track and update state before any external call.
 
 ## Read Only Reentrancy
-Code snippet:
-Attack Contract:
-Explanation:
+Explanation: Many standard projects contracts interact as a system where one code is extracted from the other, or there is a breakdown in different protocol logic is such a way that one contract rely on the other. When a contracts which has a reentrancy vulnerability is exploited, other contracts which relies on that particular contract automatically becomes exposed to an attack; this exposure is usally what is reffered to as a read-only reentrancy.
 
-## ERC777 & ERC721 Reentrancies
-Code snippet:
-Attack Contract:
-Explanation:
 
-## Breaking down 2 Complex Examples FIndings of Reentrancy From solodit.
+
 
 
 

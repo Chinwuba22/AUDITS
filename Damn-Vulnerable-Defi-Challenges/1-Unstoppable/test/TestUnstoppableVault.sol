@@ -22,9 +22,6 @@ contract TestUnstoppableVault is Test {
     address player1 = makeAddr("player");
     address player2 = makeAddr("player2");
     address feeReciepent = makeAddr("feeReceiver");
-   
-
-
 
      function setUp() public  {
         token = new DamnValuableToken();

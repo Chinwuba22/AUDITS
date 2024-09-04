@@ -1,12 +1,14 @@
 ## My Audits Process
 
 **Scooping:** 
+
 1. Clone and checkout the repo.
 2. Bring in the tools you want to use (Foundry in my case).
 3. Install necesary depencies.
-4. Compile/build to check that all files compile as intended.
+4. Compile/build to check that all files compiles as intended.
 5. Simple test and coverage to confirm they have done adequate test and that they work.
-6. Also use coverage glutters to see the part of the code that was not tested.
+6. Also use coverage glutters to see the part of the code that was not tested. [https://x.com/nisedo_/status/1703803338326704217?s=46](How?)
+7. Use Mark Files extension to highlight all files in scope. [https://x.com/0x3b33/status/1822891695236681974?s=46](How?)
 
 **Read the docs**
 
@@ -21,14 +23,16 @@ Solidity metrics is also used at this stage to get a better visual layout of the
 1. Slither (```slither .```)
 2. Aderyn (```aderyn .```)
 
-**Determine the Invariant**
+**Determine the Invariant in case of a private audit**
 
-**Write a stateless & stateful test(open and closed) if not written yet or read the test if its available**
+**Write a stateless & stateful test(open and closed) if not written yet or read the test if its available in case of a private audit**
+
+**Go through the docs again**
 
 **Manual Review**
 1. Review slither and Aderyn finding
-2. Careful review the audit dcope files, but this time spend more time.
-3. Checkink solodit for related functions.
+2. Careful review the audit scope files, but this time spend more time with intention to find quality bugs.
+3. Checking solodit for findings with related protocols.
 
 **Write an audit report**
 

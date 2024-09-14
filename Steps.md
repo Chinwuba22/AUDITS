@@ -7,8 +7,8 @@
 3. Install necesary depencies.
 4. Compile/build to check that all files compiles as intended.
 5. Simple test and coverage to confirm they have done adequate test and that they work.
-6. Also use coverage glutters to see the part of the code that was not tested. [https://x.com/nisedo_/status/1703803338326704217?s=46](How?)
-7. Use Mark Files extension to highlight all files in scope. [https://x.com/0x3b33/status/1822891695236681974?s=46](How?)
+6. Also use coverage glutters to see the part of the code that was not tested. [How?](https://x.com/nisedo_/status/1703803338326704217?s=46)
+7. Use Mark Files extension to highlight all files in scope. [How?](https://x.com/0x3b33/status/1822891695236681974?s=46)
 
 **Read the docs**
 

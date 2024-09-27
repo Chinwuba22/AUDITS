@@ -1,3 +1,4 @@
+Floating Pragma ✅
 Lack of Precision ✅
 Randomness Vulnerabilities ✅
 Using msg.value in a Loop ✅
@@ -5,12 +6,9 @@ Arithmetic Overflows and Underflows ✅
 Deleting a Mapping Within a Struct ✅
 Access Control Vulnerabilities ✅
 Unsafe Low-Level Call ✅
-Floating Pragma ✅
 DoS Attacks ✅
 Assert Violation ✅
-Incorrect Constructor Name (solodity version < 0.4.22) ✅
 Flash Loan Attacks ✅
-Outdated Compiler Version ✅
 Hash Collision when using abi.encodePacked() with Multiple Variable-Length Arguments ✅
 Gas Griefing Attacks ✅
 Authorization Through tx.origin ✅

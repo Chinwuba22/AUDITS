@@ -1,0 +1,3 @@
+[submodule "Damn-Vulnerable-Defi-Challenges/8-Puppet/lib/forge-std"]
+	path = Damn-Vulnerable-Defi-Challenges/8-Puppet/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std

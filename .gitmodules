@@ -1,3 +1,9 @@
 [submodule "Damn-Vulnerable-Defi-Challenges/8-Puppet/lib/forge-std"]
 	path = Damn-Vulnerable-Defi-Challenges/8-Puppet/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "Damn-Vulnerable-Defi-Challenges/8-Puppet/lib/openzeppelin-contracts"]
+	path = Damn-Vulnerable-Defi-Challenges/8-Puppet/lib/openzeppelin-contracts
+	url = https://github.com/openzeppelin/openzeppelin-contracts
+[submodule "Damn-Vulnerable-Defi-Challenges/8-Puppet/lib/solmate"]
+	path = Damn-Vulnerable-Defi-Challenges/8-Puppet/lib/solmate
+	url = https://github.com/transmissions11/solmate

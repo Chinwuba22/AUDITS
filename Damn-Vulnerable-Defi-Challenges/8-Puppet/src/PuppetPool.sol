@@ -1,14 +1,11 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+// Damn Vulnerable DeFi v4 (https://damnvulnerabledefi.xyz)
+pragma solidity =0.8.25;
 
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-import "@openzeppelin/contracts/utils/Address.sol";
-import "../DamnValuableToken.sol";
+import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+import {Address} from "@openzeppelin/contracts/utils/Address.sol";
+import {DamnValuableToken} from "./DamnValuableToken.sol";
 
-/**
- * @title PuppetPool
- * @author Damn Vulnerable DeFi (https://damnvulnerabledefi.xyz)
- */
 contract PuppetPool is ReentrancyGuard {
     using Address for address payable;
 
@@ -33,8 +30,9 @@ contract PuppetPool is ReentrancyGuard {
     function borrow(uint256 amount, address recipient) external payable nonReentrant {
         uint256 depositRequired = calculateDepositRequired(amount);
 
-        if (msg.value < depositRequired)
+        if (msg.value < depositRequired) {
             revert NotEnoughCollateral();
+        }
 
         if (msg.value > depositRequired) {
             unchecked {
@@ -47,14 +45,16 @@ contract PuppetPool is ReentrancyGuard {
         }
 
         // Fails if the pool doesn't have enough tokens in liquidity
-        if(!token.transfer(recipient, amount))
+        if (!token.transfer(recipient, amount)) {
             revert TransferFailed();
+        }
 
         emit Borrowed(msg.sender, recipient, depositRequired, amount);
     }
 
     function calculateDepositRequired(uint256 amount) public view returns (uint256) {
         return amount * _computeOraclePrice() * DEPOSIT_FACTOR / 10 ** 18;
+        // 1 * 1 ether * 2 / 10ether
     }
 
     function _computeOraclePrice() private view returns (uint256) {
